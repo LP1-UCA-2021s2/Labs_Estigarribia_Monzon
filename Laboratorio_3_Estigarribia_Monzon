@@ -1,0 +1,100 @@
+/*
+ ============================================================================
+ Name        : Laboratorio_3_Estigarribia_Monzon.c
+ Author      : Martin Monzon, Jorge Estigarribia
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define TOI 48	//VALOR ASCII PARA CONSEGUIR VALOR ENTERO CON RESTA
+#define PRIME_LEN 25//CANTIDAD DE NUMEROS PRIMOS DE DOS DIGITOS
+#define CANT_NUM 50
+//auxiliar de dos elementos
+
+int contador=0;//para verificar que el vector es especial.
+int isPrime(int value)
+{
+	int prime[PRIME_LEN]={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};
+	int j=0;
+
+	while(j<PRIME_LEN)
+		{
+			if(value==prime[j])
+			{
+			printf("es un numero primo.\n");
+			contador++;
+			return 1;
+			}
+			j++;
+
+		}
+	printf("no es un numero primo.\n");
+	return 0;
+}
+
+int number;
+int aux[2];
+int main(void)
+{
+	{
+	int limit;
+	int i;
+	char vector[CANT_NUM];
+	while (1)
+	{
+	printf("Ingrese el numero :\n");
+	scanf("%s",vector);
+	limit=strlen(vector);
+	//printf("%d\n",limit);
+	for(i=0;i<limit;i++)
+	{
+		//Verificacion para saber si esta en rango de numeros.
+		if(vector[i]<'0' || vector[i]>'9')
+		{
+			printf("Vuelva a introducir el numero :");
+			scanf("%s",vector);
+		}
+	}
+
+	for(i=0;i<limit/2;i++)
+	{
+			aux[0]=((int) vector[i])-TOI;//le restamos TOI para tener el valor del entero.
+			aux[1]=((int) vector[limit-i-1])-TOI;
+			number=aux[0]*10+aux[1];
+			printf("%d ",number);
+			isPrime(number);
+
+	}
+	//if statement para
+	if(limit%2!=0)
+	{
+			aux[0]=0;
+			aux[1]=((int) vector[(limit/2)])-TOI;
+			number=aux[0]*10+aux[1];
+			printf("%d ",number);
+			isPrime(number);
+			if(contador==(limit+1)/2)
+					printf("El vector %s es especial\n",vector);
+			else
+				printf("El vector %s no es especial\n",vector);
+
+	}
+	else
+	{
+		if(contador==(limit/2))
+			printf("El vector %s es especial\n",vector);
+		else
+			printf("El vector %s no es especial\n",vector);
+	}
+	}
+	}
+
+
+
+	return 0;
+}
