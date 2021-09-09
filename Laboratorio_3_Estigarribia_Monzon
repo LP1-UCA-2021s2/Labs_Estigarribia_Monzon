@@ -70,7 +70,7 @@ int main(void)
 			isPrime(number);
 
 	}
-	//if statement para
+	//if statement para saber si la cantidad del vector es impar
 	if(limit%2!=0)
 	{
 			aux[0]=0;
@@ -79,7 +79,7 @@ int main(void)
 			printf("%d ",number);
 			isPrime(number);
 			if(contador==(limit+1)/2)
-					printf("El vector %s es especial\n",vector);
+				printf("El vector %s es especial\n",vector);
 			else
 				printf("El vector %s no es especial\n",vector);
 
